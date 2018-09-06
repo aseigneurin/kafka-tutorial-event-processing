@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.51"
+    }
+}
+
+apply plugin: "java"
+apply plugin: "kotlin"
+
+// $ gradle classes
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+repositories {
+    mavenCentral()
+    flatDir { dirs 'lib' }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.51"
+
+    // logging
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'org.slf4j:slf4j-log4j12:1.7.25'
+
+    // Kafka
+    compile 'org.apache.kafka:kafka-clients:2.0.0'
+    compile 'org.apache.kafka:kafka-streams:2.0.0'
+
+//    compile 'org.apache.kafka:kafka-clients:2.1.0-SNAPSHOT'
+//    compile 'org.apache.kafka:kafka-streams:2.1.0-SNAPSHOT'
+//    compile 'org.rocksdb:rocksdbjni:5.14.2'
+}
